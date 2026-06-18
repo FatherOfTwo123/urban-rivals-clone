@@ -1,0 +1,13 @@
+# Local tooling / editor config
+.claude/
+.vscode/
+.idea/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (not used at runtime, but just in case)
+node_modules/
+npm-debug.log*

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Urban Rivals Clone — Local</title>
+<link rel="stylesheet" href="ui/style.css?v=5">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>⚔️ Clint City Rivals <small>offline · real card data</small></h1>
+    <nav>
+      <button data-view="menu" class="nav-btn active">Menu</button>
+      <button data-view="deck" class="nav-btn">Deck Builder</button>
+      <button data-view="collection" class="nav-btn">Collection</button>
+    </nav>
+  </header>
+
+  <main id="view"></main>
+
+  <footer><small>Fan-made Urban Rivals clone. Card data &amp; art from <a href="https://iclintz.com" target="_blank" rel="noopener">iClintz</a> — refresh via <code>node tools/fetch-cards.js</code>. Not affiliated with Urban Rivals.</small></footer>
+</div>
+
+<script src="engine/abilities.js?v=5"></script>
+<script src="data/cards.js?v=5"></script>
+<script src="engine/game.js?v=5"></script>
+<script src="engine/portrait.js?v=5"></script>
+<script src="ui/app.js?v=5"></script>
+</body>
+</html>
