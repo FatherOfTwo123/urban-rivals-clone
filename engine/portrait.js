@@ -31,21 +31,16 @@
     const maxLevel = card.maxLevel || card.stars || lvl;
     const hasAbility = !!card.abilityText;
     const abilityText = card.abilityText || "No ability";
-    const abilitySupported = !!(card.ability && card.ability.supported);
-    const bonusSupported = !!(clan.bonus && clan.bonus.supported);
-
-    // Greying — an effect shown but not in effect is dimmed (negated / locked / cosmetic).
-    let abilityGrey, abilityTitle;
-    if (opts.abilityInEffect !== undefined) { abilityGrey = hasAbility && !opts.abilityInEffect; abilityTitle = abilityGrey ? abilityText + " — not in effect this round" : abilityText; }
-    else if (!hasAbility) { abilityGrey = false; abilityTitle = "No ability"; }
-    else if (!card.abilityActive) { abilityGrey = true; abilityTitle = abilityText + ` — unlocks at level ${card.abilityLevel}`; }
-    else if (!abilitySupported) { abilityGrey = true; abilityTitle = abilityText + " — cosmetic (not simulated)"; }
-    else { abilityGrey = false; abilityTitle = abilityText; }
-
-    let bonusGrey, bonusTitle;
     const bonusText = clan.bonusText || "";
-    if (opts.bonusInEffect !== undefined) { bonusGrey = !!bonusText && !opts.bonusInEffect; bonusTitle = bonusGrey ? bonusText + " — not in effect this round" : bonusText; }
-    else { bonusGrey = !!bonusText && !bonusSupported; bonusTitle = bonusGrey ? bonusText + " — cosmetic (not simulated)" : bonusText; }
+
+    // Greying happens ONLY in a battle clash, where opts.*InEffect tells us whether the
+    // effect actually fired (it was stopped / not in effect). On the card itself we always
+    // show the printed ability & bonus in full colour — it's just what the card has.
+    let abilityGrey = false, abilityTitle = abilityText;
+    if (opts.abilityInEffect !== undefined) { abilityGrey = hasAbility && !opts.abilityInEffect; if (abilityGrey) abilityTitle = abilityText + " — not in effect this round"; }
+
+    let bonusGrey = false, bonusTitle = bonusText;
+    if (opts.bonusInEffect !== undefined) { bonusGrey = !!bonusText && !opts.bonusInEffect; if (bonusGrey) bonusTitle = bonusText + " — not in effect this round"; }
 
     const emblem = clan.emblem ? `<img class="urc-emblem" src="${esc(clan.emblem)}" alt="" loading="lazy">` : "";
     // XP gauge fill — shown for owned cards (card._xpPct / card._xpMax provided by the UI)

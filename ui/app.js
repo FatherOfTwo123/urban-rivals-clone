@@ -215,7 +215,7 @@
     const head = el("div", "panel coll-head");
     const list = filteredCards();
     head.appendChild(el("h3", null, `📚 Collection <span class="muted">— ${Math.min(list.length, POOL_CAP)} of ${list.length}</span>`));
-    head.appendChild(el("p", "muted", "Play cards in duels to earn XP, then level them up to raise Damage and unlock their ability."));
+    head.appendChild(el("p", "muted", "Play cards in duels to earn XP, then level them up to raise their Damage."));
     head.appendChild(filterBar());
     wrap.appendChild(head);
     const grid = el("div", "coll-grid");

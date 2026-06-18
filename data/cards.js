@@ -52,7 +52,7 @@
       id: c.id, name: c.name, clan: c.clan, rarity: c.rarity, stars: c.stars,
       power: c.power, damage: c.damage, art: c.art,
       abilityText: c.ability, ability: c.ability ? parse(c.ability) : null,
-      abilityLevel: c.stars, // ability unlocks at max level
+      abilityLevel: minLevel({ stars: c.stars }), // ability active at any playable level
     }));
     CARD_BY_ID = Object.fromEntries(CARDS.map((c) => [c.id, c]));
 
